@@ -44,4 +44,9 @@ public class BlogController {
         Optional<Blog> blog = blogRepository.findById(id);
         return new ResponseEntity(blog, HttpStatus.OK);
     }
+    @GetMapping("/{title}")
+    public ResponseEntity findAllByTitleContain(@PathVariable String title){
+        Iterable<Blog> blogs = blogRepository.findAllByTitleContaining(title);
+        return new ResponseEntity(blogs, HttpStatus.OK);
+    }
 }
